@@ -1,11 +1,19 @@
-export function SearchByPropertyType() {
+import React from "react";
+
+export function SearchByPropertyType(props: { onSelect: (property: string) => void }) {
+  const [properties] = React.useState([
+    { label: 'Home Type', value: '' },
+    { label: 'House', value: 'House' },
+    { label: 'Condo', value: 'Condo' },
+    { label: 'Apartment', value: 'Apartment' },
+    { label: 'Lots/Land', value: 'Lot' }
+  ])
   return (
     <div>
-      <select>
-        <option value="House">House</option>
-        <option value="Condo">Condo</option>
-        <option value="Apartment">Apartment</option>
-        <option value="Lots-land">Lots-land</option>
+      <select >
+        {properties.map(p => (
+          <option value={p.value} onClick={() => props.onSelect(p.value)}>{p.label}</option>
+        ))}
       </select>
     </div>
   );
