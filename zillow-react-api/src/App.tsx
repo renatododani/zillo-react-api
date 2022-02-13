@@ -8,14 +8,16 @@ import { SearchByBaths } from "./components/SearchByBaths";
 import { SearchByBeds } from "./components/SearchByBeds";
 import { PropertySearch } from "./components/PropertySearch";
 import { Filters } from "./components/Filters";
+import { HomePage } from "./components/HomePage";
 
 function App() {
-  useEffect(() => {
-    RealtyResponse();
-  }, []);
+  //   useEffect(() => {
+  //     RealtyResponse();
+  //   }, []);
 
   return (
     <div className="App">
+      <HomePage></HomePage>
       <Filters></Filters>
       <PropertySearch></PropertySearch>
     </div>

@@ -5,9 +5,78 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 20px;
+  background-image: url("../public/Images/house.jpeg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.arsLogo {
+  height: 50px;
+  padding: 10px;
+}
+
+h1 {
+  color: rgb(0, 106, 255);
+  font-size: 2.5rem;
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+h2 {
+  color: rgb(92, 17, 17);
+}
+
+.homePage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.awaits {
+  margin: 20px;
+  color: rgb(110, 39, 39);
+}
+
+.optionsDrop {
+  display: inline-block;
+  align-items: center;
+  padding: 10px 10px;
+  justify-content: space-evenly;
+}
+
+select {
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 1.5rem;
+  width: 250px;
+  cursor: pointer;
+}
+
+input {
+  padding: 10px;
+  font-size: 1.5rem;
+  margin-left: 0;
+  width: 600px;
+  margin: 10px;
+  border: 2px solid rgb(156, 155, 155);
+}
+
+.searchBtn {
+  padding: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: 2px solid rgb(156, 155, 155);
+  background: white;
+}
+
+.propertySearch {
+  margin-top: 20px;
 }

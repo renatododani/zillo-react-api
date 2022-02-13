@@ -3,7 +3,7 @@ export function PropertySearch() {
     <div>
       <input type="text" placeholder="Location,Zip" />
       <span>
-        <button>Search</button>
+        <button className="searchBtn">Search</button>
       </span>
     </div>
   );
