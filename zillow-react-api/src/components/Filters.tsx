@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { PropertySearch } from "./PropertySearch";
 import { SearchByBaths } from "./SearchByBaths";
 import { SearchByBeds } from "./SearchByBeds";
 import { SearchByPrice } from "./SearchByPrice";
 import { SearchByPropertyType } from "./SearchByPropertyType";
+
 export function Filters() {
   const [price, setPrice] = useState(0);
   function setPriceValue(value: number) {
@@ -20,14 +22,14 @@ export function Filters() {
   function setBathrooms(value: number) {
     setBaths(value);
   }
+  
   return (
     <div>
       <SearchByPrice onSelect={(price) => setPriceValue(price)}></SearchByPrice>
-      <SearchByPropertyType
-        onSelect={(property) => setPropertyType(property)}
-      ></SearchByPropertyType>
+      <SearchByPropertyType onSelect={(property) => setPropertyType(property)}></SearchByPropertyType>
       <SearchByBeds onSelect={(bed) => setBedrooms(bed)}></SearchByBeds>
       <SearchByBaths onSelect={(bath) => setBathrooms(bath)}></SearchByBaths>
+      <PropertySearch></PropertySearch>
     </div>
   );
 }
