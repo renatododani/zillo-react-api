@@ -11,9 +11,9 @@ import { Filters } from "./components/Filters";
 import { HomePage } from "./components/HomePage";
 
 function App() {
-  //   useEffect(() => {
-  //     RealtyResponse();
-  //   }, []);
+  // // useEffect(() => {
+  // //   RealtyResponse();
+  // }, []);
 
   return (
     <div className="App">
