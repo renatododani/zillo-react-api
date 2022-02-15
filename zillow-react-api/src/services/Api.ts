@@ -1,14 +1,10 @@
-import axios from 'axios';
+import axios from "axios";
 import { Property } from "../models/Property";
 
-
-
-export function RealtyResponse(){
-
+export function RealtyResponse() {
   // return axios.get<Property>(
   // //   "https:/realty-mole-property-api.p.rapidapi.com/saleListings",
   // //   {
-      
   // //     method: "GET",
   // //     headers: {
   // //       "x-rapidapi-host": "realty-mole-property-api.p.rapidapi.com",
@@ -17,21 +13,14 @@ export function RealtyResponse(){
   // //   }
   // // )
   // //   .then((response) => response.data)
-    
-    
-    
   // //   .catch((err) => {
   // //     console.error(err);
-    
   //    )
-    
 }
-export function getSearchDetails(){
-
+export function getSearchDetails() {
   // return axios.get<Property>(
   //   "https:/realty-mole-property-api.p.rapidapi.com/saleListings",
   //   {
-      
   //     method: "GET",
   //     params: {city: '', state: '', zipCode: ''},
   //     headers: {
@@ -41,11 +30,7 @@ export function getSearchDetails(){
   //   }
   // )
   //   .then((response) => response.data)
-    
-    
-    
   //   .catch((err) => {
   //     console.error(err);
   //   })
-    
 }

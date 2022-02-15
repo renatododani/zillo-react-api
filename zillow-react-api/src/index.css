@@ -9,7 +9,10 @@ body {
   background-image: url("../public/Images/house.jpeg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100%;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 code {
@@ -31,7 +34,8 @@ h1 {
 }
 
 h2 {
-  color: rgb(92, 17, 17);
+  /* color: rgb(92, 17, 17); */
+  text-align: center;
 }
 
 .homePage {
@@ -41,15 +45,16 @@ h2 {
 }
 
 .awaits {
+  text-align: center;
   margin: 20px;
-  color: rgb(110, 39, 39);
+  color: black;
 }
 
 .optionsDrop {
   display: inline-block;
   align-items: center;
   padding: 10px 10px;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 select {

@@ -6,11 +6,7 @@ function App() {
   // //   RealtyResponse();
   // }, []);
 
-  return (
-    <div className="App">
-      {/* <HomePage></HomePage> */}
-    </div>
-  );
+  return <div className="App">{/* <HomePage></HomePage> */}</div>;
 }
 
 export default App;
