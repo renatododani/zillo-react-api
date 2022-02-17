@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PropertySearch } from "./PropertySearch";
 import { SearchByBaths } from "./SearchByBaths";
 import { SearchByBeds } from "./SearchByBeds";
 import { SearchByPrice } from "./SearchByPrice";
 import { SearchByPropertyType } from "./SearchByPropertyType";
+import { HomePage } from "./HomePage";
+import { getSearchDetails } from "../services/Api";
 
-export function Filters() {
+export function Filters(props: { searchTerm: string }) {
   const [price, setPrice] = useState(0);
   function setPriceValue(value: number) {
     setPrice(value);
@@ -22,6 +24,17 @@ export function Filters() {
   function setBathrooms(value: number) {
     setBaths(value);
   }
+  const [searchTerm, setSearchTerm] = useState(props.searchTerm);
+
+  useEffect(() => {
+    setSearchTerm(props.searchTerm);
+  }, [props]);
+
+  useEffect(() => {
+    getSearchDetails(searchTerm, beds, baths, property, price).then(
+      (data) => {}
+    );
+  }, [searchTerm, beds, baths, property, price]);
 
   return (
     <div>
@@ -31,7 +44,6 @@ export function Filters() {
       ></SearchByPropertyType>
       <SearchByBeds onSelect={(bed) => setBedrooms(bed)}></SearchByBeds>
       <SearchByBaths onSelect={(bath) => setBathrooms(bath)}></SearchByBaths>
-      <PropertySearch></PropertySearch>
     </div>
   );
 }

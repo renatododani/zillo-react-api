@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SearchResults } from "./SearchResults";
 
-export function PropertySearch() {
-  const [searchTerm, setSearchTerm] = useState<any>("");
+export function PropertySearch(props: {
+  onSubmit: (searchTerm: string) => void;
+}) {
+  const [searchTerm, setNewSearchTerm] = useState<any>("");
   const navigate = useNavigate();
   function onSubmit() {
+    setNewSearchTerm(searchTerm);
     navigate("/results");
   }
 
@@ -15,11 +18,14 @@ export function PropertySearch() {
 
   return (
     <div>
-      <input type="text" placeholder="State, City, Zip" value={searchTerm} />
+      <input
+        type="text"
+        value={searchTerm}
+        placeholder="State, City"
+        onChange={(e) => setNewSearchTerm(e.target.value)}
+      />
       <span>
-        <button className="searchBtn" onClick={onSubmit}>
-          Search
-        </button>
+        <button onClick={() => props.onSubmit(searchTerm)}>Search</button>
       </span>
       {/* <Filters></Filters> */}
     </div>
