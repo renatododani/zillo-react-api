@@ -6,9 +6,14 @@ import { SearchByPrice } from "./SearchByPrice";
 import { SearchByPropertyType } from "./SearchByPropertyType";
 import { HomePage } from "./HomePage";
 import { getSearchDetails } from "../services/Api";
+import { Property } from "../models/Property";
 
-export function Filters(props: { searchTerm: string }) {
+export function Filters(props: {
+  searchTerm: string;
+  onResults: (properties: Property[]) => void;
+}) {
   const [price, setPrice] = useState(0);
+
   function setPriceValue(value: number) {
     setPrice(value);
   }
@@ -31,10 +36,11 @@ export function Filters(props: { searchTerm: string }) {
   }, [props]);
 
   useEffect(() => {
-    getSearchDetails(searchTerm, beds, baths, property, price).then(
-      (data) => {}
+    getSearchDetails(searchTerm, beds, baths, property, price).then((data) =>
+      props.onResults(data.items)
     );
-  }, [searchTerm, beds, baths, property, price]);
+    console.log(searchTerm, beds, baths, property, price);
+  }, [searchTerm, beds, baths, property, price, props]);
 
   return (
     <div>
