@@ -13,7 +13,7 @@ ReactDOM.render(
       <App />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/results" element={<SearchResults />} />
+        <Route path="/results" element={<SearchResults properties={[]} />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>,
