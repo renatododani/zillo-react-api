@@ -18,12 +18,12 @@ export function RealtyResponse() {
   // //     console.error(err);
   //    )
 }
-export function getSearchDetails(city: string, beds: number, baths: number, property: string, price: number) {
+export function getSearchDetails(city: string, beds: string, baths: string, state: string) {
   return axios.get(
-    `https:/realty-mole-property-api.p.rapidapi.com/saleListings`,
+    'https://realty-mole-property-api.p.rapidapi.com/saleListings',
     {
       method: "GET",
-      params: {city: city, beds: beds, baths: baths, property: property, price: price },
+      params: {city: city, bedrooms: beds, bathrooms: baths, state: state, limit: '30' },
       headers: {
         "x-rapidapi-host": "realty-mole-property-api.p.rapidapi.com",
         "x-rapidapi-key": process.env.REACT_APP_RAPID_API_KEY!,

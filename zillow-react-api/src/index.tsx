@@ -3,19 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { HomePage } from "./components/HomePage";
-import { SearchResults } from "./components/SearchResults";
+// import { BrowserRouter, Route, Routes } from "react-router-dom";
+// import { HomePage } from "./components/HomePage";
+// import { SearchResults } from "./components/SearchResults";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/results" element={<SearchResults properties={[]} />} />
-      </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );

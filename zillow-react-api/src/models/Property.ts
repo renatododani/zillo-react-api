@@ -1,8 +1,8 @@
 export interface Property {
   addressLine1: string;
   addressLine2: string;
-  bathrooms: number;
-  bedrooms: number;
+  bathrooms: string;
+  bedrooms: string;
   city: string;
   // "county":string
   // "createdDate":string

@@ -8,6 +8,7 @@ import { HomePage } from "./HomePage";
 import { getSearchDetails } from "../services/Api";
 import { Property } from "../models/Property";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { SearchByStates } from "./SearchByStates";
 
 interface IFilterSearchProps {
   setResults: (properties: Property[]) => void;
@@ -18,48 +19,54 @@ export function Filters({ setResults }: IFilterSearchProps) {
   const [property, setProperty] = useState("");
   const [beds, setBeds] = useState(0);
   const [baths, setBaths] = useState(0);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchCity, setSearchCity] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
+  const [searchState, setSearchState] = useState("");
+  const [states, setStates] = useState("");
+  const [limit, setLimit] = useState(0);
 
   const navigate = useNavigate();
 
   function submitHandler(e: FormEvent) {
     e.preventDefault();
+
     const queryStringParams: any = {};
-    queryStringParams.beds = beds;
-    queryStringParams.baths = baths;
-    queryStringParams.property = property;
-    queryStringParams.price = price;
-    setSearchParams(new URLSearchParams(queryStringParams));
-    navigate(
-      `/SearchResults?` + new URLSearchParams(queryStringParams).toString()
-    );
+    queryStringParams.bedrooms = beds;
+    queryStringParams.bathrooms = baths;
+    queryStringParams.city = searchCity;
+    queryStringParams.state = states;
+    queryStringParams.limit = limit;
+    // queryStringParams.propertyType = property;
+    // queryStringParams.price = price;
+    navigate(`/results?` + new URLSearchParams(queryStringParams).toString());
   }
 
-  function onSubmit() {
-    // getSearchDetails(searchTerm, beds, baths, property, price).then((data) =>
-    //   setResults(data.items)
-    // );
-    setSearchParams({ searchTerm, property });
-    // setSearchTerm(searchTerm);
-    navigate("/results", {});
-  }
+  // function onSubmit() {
+  //   getSearchDetails(searchTerm, baths, beds).then((data) =>
+  //     setResults(data.items)
+  //   );
+  //   setSearchParams({ searchTerm });
+  //   setSearchTerm(searchTerm);
+  //   navigate("/results", {});
+
+  // }
 
   return (
     <>
       <div>
         <input
           type="text"
-          value={searchTerm}
-          placeholder="State, City"
-          onChange={(e) => setSearchTerm(e.target.value)}
+          value={searchCity}
+          placeholder="City"
+          onChange={(e) => setSearchCity(e.target.value)}
         />
       </div>
+      <SearchByStates onSelect={(state) => setStates(state)} />
       <SearchByPrice onSelect={(price) => setPrice(price)} />
       <SearchByPropertyType onSelect={(property) => setProperty(property)} />
       <SearchByBeds onSelect={(bed) => setBeds(bed)} />
       <SearchByBaths onSelect={(bath) => setBaths(bath)} />
-      <button onClick={onSubmit}>Search</button>
+      <button onClick={submitHandler}>Search</button>
     </>
   );
 }
