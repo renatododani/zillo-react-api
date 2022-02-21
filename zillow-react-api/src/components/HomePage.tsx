@@ -1,14 +1,17 @@
-import React, { FC, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Filters } from "./Filters";
-
+import { PropertySearch } from "./PropertySearch";
 import { Property } from "../models/Property";
 import { SearchResults } from "./SearchResults";
 
-interface IHomePageProps {
-  setResults: (results: Property[]) => void;
-}
+export function HomePage() {
+  const [searchTerm, setSearchTerm] = useState<any>("");
+  const [items, setItems] = useState<Property[]>([]);
 
-export const HomePage: FC<IHomePageProps> = ({ setResults }) => {
+  function setSearch(search: string) {
+    setSearchTerm(search);
+  }
+
   return (
     <div>
       <div className="homePage">
@@ -16,47 +19,16 @@ export const HomePage: FC<IHomePageProps> = ({ setResults }) => {
         <h1>ARS</h1>
       </div>
       <h1 className="awaits">Your new home awaits you</h1>
-
-      <Filters setResults={setResults} />
+      <Filters
+        onResults={(properties) => {
+          setItems(properties);
+        }}
+        searchTerm={searchTerm}
+      ></Filters>
+      <PropertySearch
+        onSubmit={(searchTerm) => setSearch(searchTerm)}
+      ></PropertySearch>
+      <SearchResults properties={items}></SearchResults>
     </div>
   );
-};
-
-// import React, { useEffect, useState } from "react";
-// import { getSearchDetails } from "../services/Api";
-// import { Filters } from "./Filters";
-// // import { PropertySearch } from "./PropertySearch";
-// // import { Navigate, useNavigate } from "react-router-dom";
-// import { Property } from "../models/Property";
-// // import { SavedProperties } from "./SavedProperties";
-// import { SearchResults } from "./SearchResults";
-
-// export function HomePage() {
-//   const [searchTerm, setSearchTerm] = useState<any>("");
-//   const [items, setItems] = useState<Property[]>([]);
-
-//   function setSearch(search: string) {
-//     setSearchTerm(search);
-//   }
-
-//   return (
-//     <div>
-//       <div className="homePage">
-//         <img className="arsLogo" alt="Logo Img" src="Images/ARS-logos.jpeg" />
-//         <h1>ARS</h1>
-//       </div>
-//       <h1 className="awaits">Your new home awaits you</h1>
-
-//       <PropertySearch
-//         onSubmit={(searchTerm) => setSearch(searchTerm)}
-//       ></PropertySearch>
-//       <Filters
-//         onResults={(properties) => {
-//           setItems(properties);
-//         }}
-//         searchTerm={searchTerm}
-//       ></Filters>
-//       <SearchResults properties={items}></SearchResults>
-//     </div>
-//   );
-// }
+}
