@@ -8,26 +8,27 @@ export function PropertySearch(props: {
   onSubmit: (searchTerm: string) => void;
 }) {
   const [searchTerm, setNewSearchTerm] = useState<any>("");
-  const navigate = useNavigate();
-  function onSubmit() {
-    setNewSearchTerm(searchTerm);
-    navigate("/results");
-  }
 
-  useEffect(() => {});
+  useEffect(() => {
+    setNewSearchTerm(searchTerm);
+  });
 
   return (
-    <div>
+    <div className="searchProperty">
       <input
         type="text"
         value={searchTerm}
-        placeholder="State, City"
+        placeholder="City"
         onChange={(e) => setNewSearchTerm(e.target.value)}
       />
       <span>
-        <button onClick={() => props.onSubmit(searchTerm)}>Search</button>
+        <button
+          className="searchBtn"
+          onClick={() => props.onSubmit(searchTerm)}
+        >
+          Search
+        </button>
       </span>
-      {/* <Filters></Filters> */}
     </div>
   );
 }

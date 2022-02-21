@@ -34,8 +34,12 @@ h1 {
 }
 
 h2 {
-  /* color: rgb(92, 17, 17); */
+  color: rgb(156, 61, 61);
   text-align: center;
+  font-size: 2rem;
+  margin: 10px;
+  font-family: sans-serif;
+  font-style: italic;
 }
 
 .homePage {
@@ -47,7 +51,10 @@ h2 {
 .awaits {
   text-align: center;
   margin: 20px;
-  color: black;
+  font-style: italic;
+  font-family: sans-serif;
+  color: saddlebrown;
+  box-shadow: chocolate;
 }
 
 .optionsDrop {
@@ -60,28 +67,52 @@ h2 {
 select {
   padding: 10px 20px;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 2rem;
   width: 250px;
   cursor: pointer;
+  border-radius: 7px;
+  background-color: burlywood;
+  border: 2px solid darkcyan;
+  color: rgb(4, 85, 85);
 }
 
 input {
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin-left: 0;
   width: 600px;
   margin: 10px;
   border: 2px solid rgb(156, 155, 155);
+  border-radius: 7px;
+  background-color: burlywood;
+  border: 2px solid darkcyan;
+}
+
+::placeholder {
+  color: rgb(4, 85, 85);
 }
 
 .searchBtn {
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   border: 2px solid rgb(156, 155, 155);
   background: white;
+  border-radius: 7px;
+  background-color: burlywood;
+  border: 1px solid darkcyan;
+  color: rgb(4, 85, 85);
 }
 
 .propertySearch {
   margin-top: 20px;
+}
+
+.searchProperty {
+  text-align: center;
+  margin-top: 20px;
+}
+
+ul {
+  background-color: white;
 }

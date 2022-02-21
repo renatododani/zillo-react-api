@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { getSearchDetails } from "../services/Api";
 import { Filters } from "./Filters";
 import { PropertySearch } from "./PropertySearch";
-import { Navigate, useNavigate } from "react-router-dom";
 import { Property } from "../models/Property";
-import { SavedProperties } from "./SavedProperties";
 import { SearchResults } from "./SearchResults";
 
 export function HomePage() {
@@ -22,16 +19,15 @@ export function HomePage() {
         <h1>ARS</h1>
       </div>
       <h1 className="awaits">Your new home awaits you</h1>
-
-      <PropertySearch
-        onSubmit={(searchTerm) => setSearch(searchTerm)}
-      ></PropertySearch>
       <Filters
         onResults={(properties) => {
           setItems(properties);
         }}
         searchTerm={searchTerm}
       ></Filters>
+      <PropertySearch
+        onSubmit={(searchTerm) => setSearch(searchTerm)}
+      ></PropertySearch>
       <SearchResults properties={items}></SearchResults>
     </div>
   );

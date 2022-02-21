@@ -1,25 +1,23 @@
 import { useEffect, useState } from "react";
-import { PropertySearch } from "./PropertySearch";
 import { SearchByBaths } from "./SearchByBaths";
 import { SearchByBeds } from "./SearchByBeds";
 import { SearchByPrice } from "./SearchByPrice";
-import { SearchByPropertyType } from "./SearchByPropertyType";
-import { HomePage } from "./HomePage";
+import { SearchByStateType } from "./SearchByPropertyType";
 import { getSearchDetails } from "../services/Api";
 import { Property } from "../models/Property";
+import { useNavigate } from "react-router-dom";
 
 export function Filters(props: {
   searchTerm: string;
   onResults: (properties: Property[]) => void;
 }) {
   const [price, setPrice] = useState(0);
-
   function setPriceValue(value: number) {
     setPrice(value);
   }
-  const [property, setProperty] = useState("");
-  function setPropertyType(value: string) {
-    setProperty(value);
+  const [state, setNewState] = useState("");
+  function setStateValue(value: string) {
+    setNewState(value);
   }
   const [beds, setBeds] = useState(0);
   function setBedrooms(value: number) {
@@ -36,20 +34,19 @@ export function Filters(props: {
   }, [props]);
 
   useEffect(() => {
-    getSearchDetails(searchTerm, beds, baths, property, price).then((data) =>
-      props.onResults(data.items)
+    getSearchDetails(searchTerm, beds, baths, state, price).then((data) =>
+      props.onResults(JSON.parse(JSON.stringify(data)))
     );
-    console.log(searchTerm, beds, baths, property, price);
-  }, [searchTerm, beds, baths, property, price, props]);
+  }, [searchTerm, price, state, beds, baths, props]);
 
   return (
     <div>
-      <SearchByPrice onSelect={(price) => setPriceValue(price)}></SearchByPrice>
-      <SearchByPropertyType
-        onSelect={(property) => setPropertyType(property)}
-      ></SearchByPropertyType>
-      <SearchByBeds onSelect={(bed) => setBedrooms(bed)}></SearchByBeds>
-      <SearchByBaths onSelect={(bath) => setBathrooms(bath)}></SearchByBaths>
+      <SearchByPrice onChange={(price) => setPriceValue(price)}></SearchByPrice>
+      <SearchByStateType
+        onChange={(state) => setStateValue(state)}
+      ></SearchByStateType>
+      <SearchByBeds onChange={(bed) => setBedrooms(bed)}></SearchByBeds>
+      <SearchByBaths onChange={(bath) => setBathrooms(bath)}></SearchByBaths>
     </div>
   );
 }
