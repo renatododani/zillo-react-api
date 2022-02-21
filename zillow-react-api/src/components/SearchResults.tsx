@@ -1,9 +1,16 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { isTemplateSpan } from "typescript";
 import { Property } from "../models/Property";
 import { Filters } from "./Filters";
 
 export function SearchResults(props: { properties: Property[] }) {
+  // const urlParams = useParams();
+
+  // useEffect(() => {
+  //   console.log(urlParams);
+  // }, []);
+
   return (
     <div>
       <ul>
@@ -16,7 +23,7 @@ export function SearchResults(props: { properties: Property[] }) {
       </ul>
       <input type="text" placeholder="Search address" />
       <button className="searchBtn">Search</button>
-      {/* <Filters></Filters> */}
+      {/* <FilterSearch></FilterSearch> */}
     </div>
   );
 }

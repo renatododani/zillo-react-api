@@ -14,11 +14,13 @@ export function SearchByBaths(props: { onSelect: (bath: number) => void }) {
         <label>
           <h2>Baths</h2>
         </label>
-        <select>
+        <select
+          onChange={(e) => {
+            props.onSelect(Number(e.target.value));
+          }}
+        >
           {baths.map((b) => (
-            <option value={b.value} onClick={() => props.onSelect(b.value)}>
-              {b.option}
-            </option>
+            <option value={b.value}>{b.option}</option>
           ))}
         </select>
       </form>

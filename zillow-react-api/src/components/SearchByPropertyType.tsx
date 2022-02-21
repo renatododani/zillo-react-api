@@ -16,11 +16,13 @@ export function SearchByPropertyType(props: {
         <label>
           <h2>Property</h2>
         </label>
-        <select>
+        <select
+          onChange={(e) => {
+            props.onSelect(e.target.value);
+          }}
+        >
           {properties.map((p) => (
-            <option value={p.value} onClick={() => props.onSelect(p.value)}>
-              {p.option}
-            </option>
+            <option value={p.value}>{p.option}</option>
           ))}
         </select>
       </form>

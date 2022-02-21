@@ -14,11 +14,13 @@ export function SearchByPrice(props: { onSelect: (price: number) => void }) {
         <label>
           <h2>Price</h2>
         </label>
-        <select>
+        <select
+          onChange={(e) => {
+            props.onSelect(Number(e.target.value));
+          }}
+        >
           {prices.map((p) => (
-            <option value={p.value} onClick={() => props.onSelect(p.value)}>
-              {p.option}
-            </option>
+            <option value={p.value}>{p.option}</option>
           ))}
         </select>
       </form>

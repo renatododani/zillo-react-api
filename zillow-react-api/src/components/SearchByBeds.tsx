@@ -14,13 +14,13 @@ export function SearchByBeds(props: { onSelect: (bed: number) => void }) {
         <label>
           <h2>Beds</h2>
         </label>
-        <select>
+        <select
+          onChange={(e) => {
+            props.onSelect(Number(e.target.value));
+          }}
+        >
           {beds.map((b) => (
-            <option
-              key={b.id}
-              value={b.value}
-              onClick={() => props.onSelect(b.value)}
-            >
+            <option key={b.id} value={b.value}>
               {b.option}
             </option>
           ))}
